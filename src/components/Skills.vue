@@ -6,7 +6,10 @@
     <p class="alert" v-if="errors.has('skill')">{{errors.first("skill")}}</p>
     </form>
     <ul>
-      <li v-for="(data, index) in Skills" :key="index">{{data.skill}}</li>
+      <li v-for="(data, index) in Skills" :key="index">
+        {{data.skill}}
+        <i class="fa fa-minus-circle" v-on:click="remove(index)">-Delete</i>
+      </li>
     </ul>
   <p>These are the skill that you possess.</p>
   </div>
@@ -38,8 +41,13 @@ export default {
         })
         
 
-      }//addSkill
+      },//addSkill
+      remove(index){
+        this.Skills.splice(index,1);
+      }
+    
     }//end method
+  
 }
 </script>
 
